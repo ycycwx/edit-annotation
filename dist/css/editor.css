@@ -1,0 +1,347 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,500,300,700,400);
+@import url(http://fonts.googleapis.com/css?family=Bitter);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+* {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s; }
+
+body {
+  /* background : #DDD; */
+  font-family: futura, Roboto;
+  /* background-image: url("http://fc02.deviantart.net/fs71/f/2012/180/5/8/ios_linen__system_background__by_glitchking123-d558qvb.jpg"); */
+  background-image: url("../images/ios.jpg");
+  background-repeat: repeat; }
+
+#holder {
+  background: white;
+  padding: 10px;
+  width: 250px;
+  margin: 60px auto;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); }
+
+.button {
+  background: #3D4C53;
+  margin: 20px auto;
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  transition: .2s;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
+
+.btnTwo {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin-top: -100px;
+  padding-top: 2px;
+  background: #26A69A;
+  left: -250px;
+  transition: .3s; }
+
+.btnText {
+  color: white;
+  transition: .3s; }
+
+.btnText2 {
+  margin-top: 63px;
+  margin-right: -130px;
+  color: #FFF; }
+
+.button:hover .btnTwo {
+  /*When hovering over .button change .btnTwo*/
+  left: -130px; }
+
+.button:hover .btnText {
+  /*When hovering over .button change .btnText*/
+  margin-left: 65px; }
+
+.button:active {
+  /*When button is clicked*/
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4); }
+
+/* 
+David Kerns david@kerns.dk
+htt://twitter.com/kerns
+
+Original design by echojanz: 
+http://dribbble.com/shots/1039179-Slide-Button?list=users
+*/
+/*
+Technical inspiration from tutorial by Hugo Giraudel:
+http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-fanciness/
+*/
+/* Font Awesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif; }
+
+/* Global styles */
+*, *:after, *:before {
+  box-sizing: border-box; }
+
+/*---Switch styles---*/
+/* Checkbox hack */
+.switch input {
+  cursor: pointer;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 100; }
+
+/* Container */
+.switch {
+  height: 2.75em;
+  margin: 0px auto;
+  font-size: 0.6em;
+  position: relative;
+  width: 6em;
+  line-height: 1em;
+  overflow: hidden; }
+
+/* Background unchecked */
+.switch label {
+  background: #e9513a;
+  border-radius: 2px;
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  -moz-transition: background-color .2s;
+  -ms-transition: background-color .2s;
+  -o-transition: background-color .2s;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s; }
+
+/* Slider unchecked */
+.switch label div {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  height: 2.25em;
+  left: .25em;
+  position: absolute;
+  top: .25em;
+  width: 2.5em;
+  z-index: 3;
+  -moz-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
+  -ms-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
+  -o-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
+  -webkit-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
+  transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all; }
+
+/* Vertical lines on slider */
+.switch label div:before {
+  background: #e0dcdd;
+  bottom: 0;
+  box-shadow: -.33em 0 0 0 #e0dcdd, .33em 0 0 0 #e0dcdd;
+  content: '';
+  display: block;
+  height: 32%;
+  top: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 5%;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  -webkit-transition: all .2s;
+  transition: all .2s; }
+
+/* Subtle switch hover */
+.switch:hover label div:before {
+  background: #c7c3c4;
+  box-shadow: -.33em 0 0 0 #c7c3c4, .33em 0 0 0 #c7c3c4;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  -webkit-transition: all .2s;
+  transition: all .2s; }
+
+/* Icon styles */
+.switch span {
+  font-size: 1.5em;
+  position: relative;
+  line-height: 1em;
+  z-index: 2; }
+
+.switch span.fontawesome-ok {
+  color: #13ad4f;
+  left: 15%;
+  top: 25%; }
+
+.switch span.fontawesome-remove {
+  color: #c72f18;
+  left: 37%;
+  top: 23%; }
+
+/* Checked States */
+.switch input:checked ~ label {
+  background: #2fca6c;
+  transition: background-color .2s; }
+
+.switch input:checked ~ label div {
+  left: 3.25em; }
+
+/* Self Definition */
+table {
+  table-layout: fixed;
+  /* background: #fff; */
+  background: ivory; }
+
+#check-switch {
+  text-align: left; }
+
+table th {
+  /* background: #5EDDA8; */
+  /* background: #79D8CA; */
+  border-top: 3px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.12);
+  font-family: 'Roboto:100', superclarendon; }
+
+table, thead, tbody, tfoot, td, tr, th {
+  border-spacing: 0px;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  /* border: 1px solid #dedede; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  /* border-collapse:collapse; */
+  padding: 0.98rem;
+  width: 70%;
+  font-family: futura, Roboto, Helvetica, sans-serif;
+  font: normal 1.10em/normal futura; }
+
+.relative-div {
+  position: relative;
+  margin: 50px; }
+
+.relative-div .close {
+  top: -25px;
+  right: 13%;
+  position: absolute; }
+
+.close {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 0.75em;
+  height: 0.75em;
+  /* position: relative; */
+  border: none;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  font: normal 4em/normal Arial, Helvetica, sans-serif;
+  color: black;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #1abc9c;
+  -webkit-transform: rotateZ(471.54427deg);
+  transform: rotateZ(471.54427deg); }
+
+.close:hover {
+  background: #f70000;
+  -webkit-transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -moz-transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -o-transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -webkit-transform: rotateX(-1.71887deg) rotateZ(19.48057deg);
+  transform: rotateX(-1.71887deg) rotateZ(19.48057deg); }
+
+.close:active {
+  background: #1abc9c;
+  -webkit-box-shadow: 2px 2px 9px 1px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 2px 2px 9px 1px rgba(0, 0, 0, 0.5) inset;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transform: rotateZ(471.54427deg);
+  transform: rotateZ(471.54427deg); }
+
+.close::before {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 0.45em;
+  height: 0.1em;
+  position: absolute;
+  content: "";
+  top: 0.33em;
+  left: 0.155em;
+  border: none;
+  font: normal 100%/normal Arial, Helvetica, sans-serif;
+  color: black;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #ffffff;
+  text-shadow: none;
+  -webkit-transform: rotateZ(24.06423deg);
+  transform: rotateZ(24.06423deg); }
+
+.close::after {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 0.45em;
+  height: 0.1em;
+  position: absolute;
+  content: "";
+  top: 0.33em;
+  left: 0.155em;
+  border: none;
+  font: normal 100%/normal Arial, Helvetica, sans-serif;
+  color: black;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #ffffff;
+  text-shadow: none;
+  -webkit-transform: rotateZ(-66.4631deg);
+  transform: rotateZ(-66.4631deg); }
+
+h1 {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  /* font: normal 36px/1 "Cabin Condensed", Helvetica, sans-serif; */
+  font: normal 60px/1 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica';
+  font-family: 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica', serif;
+  text-transform: uppercase;
+  /* color: #FFC100; */
+  color: #ffffff;
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; }
+
+h3 {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  /* font: normal 36px/1 "Cabin Condensed", Helvetica, sans-serif; */
+  font: normal 30px/1 'futura';
+  font-family: 'futura', serif;
+  /* color: #ffffff; */
+  /* color: #D6BB41; */
+  color: #FFC100;
+  text-decoration: underline;
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; }
+
+.highlight {
+  color: #FF6600; }
+
+.lastline {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.12); }
