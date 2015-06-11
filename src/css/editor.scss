@@ -1,21 +1,72 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:100,500,300,700,400);
-@import url(http://fonts.googleapis.com/css?family=Bitter);
+@mixin transform($transforms) {
+  transform: $transforms;
+  -webkit-transform: $transforms;
+  -ms-transform: $transforms;
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+}
+
+@mixin transition($transition) {
+  transition: $transition;
+  -webkit-transition: $transition;
+  -ms-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+}
 
 * {
-	-webkit-transition: all .2s;
-	-moz-transition: all .2s;
-	-ms-transition: all .2s;
-	-o-transition: all .2s;
-	transition: all .2s;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   /* background : #DDD; */
-  font-family : futura, Roboto;
+  font-family : 'Lato', futura, Roboto;
   /* background-image: url("http://fc02.deviantart.net/fs71/f/2012/180/5/8/ios_linen__system_background__by_glitchking123-d558qvb.jpg"); */
-  background-image: url("../images/ios.jpg");
-  background-repeat: repeat;
+  /* background-image: url("../images/ios.jpg"); */
+  /* background-repeat: repeat; */
+  background-color: black;
 }
+
+.title {
+  padding: 10px;
+  margin-bottom: 5em;
+  text-align: center;
+  h1 {
+    color: #fff;
+    font-size: 3em;
+    font-weight: 700;
+    width: 40%;
+    margin: 0px auto;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    border: 4px solid white;
+    &:hover a {
+      @include transform(scale(1.1));
+    }
+    a {
+      @include transition(all 0.2s);
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+  }
+  h3 {
+    color: #fff;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 1em;
+  }
+}
+
 #holder{
   background: white;
   padding: 10px;
@@ -23,58 +74,6 @@ body {
   margin: 60px auto;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
 }
-.button {
-  background: #3D4C53;
-  margin : 20px auto;
-  width : 200px;
-  height : 50px;
-  overflow: hidden;
-  text-align : center;
-  transition : .2s;
-  cursor : pointer;
-  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
-}
-.btnTwo {
-  position : relative;
-  width : 200px;
-  height : 100px;
-  margin-top: -100px;
-  padding-top: 2px;
-  background : #26A69A;
-  left : -250px;
-  transition : .3s;
-}
-.btnText {
-  color : white;
-  transition : .3s;
-}
-.btnText2 {
-  margin-top : 63px;
-  margin-right : -130px;
-  color : #FFF;
-}
-.button:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
-  left: -130px;
-}
-.button:hover .btnText{ /*When hovering over .button change .btnText*/
-  margin-left : 65px;
-}
-.button:active { /*When button is clicked*/
-  box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
-}
-
-/* 
-David Kerns david@kerns.dk
-htt://twitter.com/kerns
-
-Original design by echojanz: 
-http://dribbble.com/shots/1039179-Slide-Button?list=users
-*/
-
-/*
-Technical inspiration from tutorial by Hugo Giraudel:
-http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-fanciness/
-*/
 
 /* Font Awesome */
 
@@ -119,17 +118,14 @@ http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-
 /* Background unchecked */
 
 .switch label {
-  background: #e9513a;
+  /* background: #e9513a; */
+  background: #3e3e3e;
   border-radius: 2px;
   display: block;
   height: 100%;
   position: relative;
   width: 100%;
-  -moz-transition: background-color .2s;
-  -ms-transition: background-color .2s;
-  -o-transition: background-color .2s;
-  -webkit-transition: background-color .2s;
-  transition: background-color .2s;
+  @include transition(background-color .2s);
 }
 
 /* Slider unchecked */
@@ -145,11 +141,7 @@ http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-
   width: 2.5em;
   z-index: 3;
 
-  -moz-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
-  -ms-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
-  -o-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
-  -webkit-transition: 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
-  transition : 0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all;
+  @include transform(0.15s cubic-bezier(0.175, 0.285, 0.2, 1.275) all);
 }
 
 /* Vertical lines on slider */
@@ -206,7 +198,7 @@ http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-
 }
 
 .switch span.fontawesome-remove {
-  color: #c72f18;
+  color: #191918;
   left: 37%;
   top: 23%;
 }
@@ -223,173 +215,333 @@ http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-
 
 /* Self Definition */
 
-table {
-  table-layout: fixed;
-  /* background: #fff; */
-  background: ivory;
-}
-
 #check-switch {
   text-align: left;
 }
 
-table th {
-  /* background: #5EDDA8; */
-  /* background: #79D8CA; */
-  border-top: 3px solid rgba(0,0,0,.12);
-  border-bottom: 3px solid rgba(0,0,0,.12);
-  font-family: 'Roboto:100', superclarendon;
-}
-
-table, thead, tbody, tfoot, td, tr, th {
+table {
+  table-layout: fixed;
+  /* background: #fff; */
+  /* background: ivory; */
+  background-color: #191918;
+  width: 100%;
   border-spacing: 0px;
   overflow: hidden;
   text-align: center;
   vertical-align: middle;
   margin: auto;
-  /* border: 1px solid #dedede; */
-  border-bottom: 1px solid rgba(0,0,0,.12);
-  /* border-collapse:collapse; */
-  padding: 0.98rem;
-  width: 70%;
-  font-family: futura, Roboto, Helvetica, sans-serif;
-  font: normal 1.10em/normal futura;
+  padding: 0;
+  font-size: 1.2em;
+  color: white;
+  th {
+    font-family: 'Roboto:100', superclarendon;
+    padding: 0.98rem 0;
+  }
+  td {
+    font-family: futura, Roboto, Helvetica, sans-serif;
+    padding: 0.98rem 0;
+  }
 }
 
-.relative-div {
+.parent {
   position: relative;
-  margin: 50px;
+  width: 60%;
+  margin: 20px auto;
+  .close {
+    top: 0px;
+    right: -25px;
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    .middle {
+      top: 50%;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      left: 0;
+      margin-top: -1px;
+      background: #fff;
+      @include transition(all 0.2s cubic-bezier(0.5,0,0.5,1));
+    }
+    &:hover {
+      &::before, &::after {
+        /* background: red; */
+        background: #d78716;
+        top: 50%;
+      }
+      &::before {
+        @include transform(rotate(45deg) scale(1.2));
+      }
+      &::after {
+        @include transform(rotate(-45deg) scale(1.2));
+      }
+      .middle {
+        @include transform(scale(0));
+      }
+    }
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      background: #fff;
+    }
+    &::before {
+      @include transition(all 0.2s cubic-bezier(0.5,0,0.5,1));
+      top: 80%;
+    }
+    &::after {
+      @include transition(all 0.2s cubic-bezier(0.5,0,0.5,1));
+      top: 20%;
+    }
+  }
 }
 
-.relative-div .close {
-  top: -25px;          
-  right: 13%;        
-  position: absolute;
+.group-parent {
+  &:nth-child(odd) th {
+    background-color: #198a88;
+  }
+  &:nth-child(even) th {
+    background-color: #a62424;
+  }
 }
 
-.close {
-  display: inline-block;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 0.75em;
-  height: 0.75em;
+.uploadBox {
   /* position: relative; */
-  border: none;
-  -webkit-border-radius: 1em;
-  border-radius: 1em;
-  font: normal 4em/normal Arial, Helvetica, sans-serif;
-  color: rgba(0,0,0,1);
-  -o-text-overflow: clip;
-  text-overflow: clip;
-  background: #1abc9c;
-  -webkit-transform: rotateZ(471.54426539266757deg);
-  transform: rotateZ(471.54426539266757deg);
+  /* padding: 10px 10px; */
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #191919;
+  outline: none;
+  form {
+    margin: 30px auto;
+    width: 80%;
+    input[type="text"] {
+      width: 100%;
+      color: #fff;
+      background: #191919;
+      outline: none;
+      font-size: 1em;
+      padding: 1em 0;
+      border: none;
+      -webkit-appearance: none;
+    }
+    .btn {
+      text-align: center;
+      display: inline-block;
+      border: none;
+      outline: none;
+      color: #FFF;
+      padding: 0.6em;
+      font-size: 1em;
+      font-weight: 500;
+      margin: 1.3em 0 0 0;
+      width: 100%;
+      -webkit-appearance: none;
+      background: #198a88;
+      border: none;
+      transition: 0.5s all;
+      -webkit-transition: 0.5s all;
+      -o-transition: 0.5s all;
+      -moz-transition: 0.5s all;
+      -ms-transition: 0.5s all;
+      &:hover {
+        background: #d78716;
+      }
+      text-align: center;
+      @media screen and (max-width: 1920px) {
+        width: 50%;
+        display: inline-block;
+      }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin: 20px auto;
+      }
+    }
+    #submitBtn, #uploadBtn {
+      display: none;
+    }
+  }
 }
 
-.close:hover {
-  background: rgba(247,0,0,1);
-  -webkit-transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  -moz-transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  -o-transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  transition: background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  -webkit-transform: rotateX(-1.7188733853924696deg) rotateZ(19.48056503444799deg)   ;
-  transform: rotateX(-1.7188733853924696deg) rotateZ(19.48056503444799deg)   ;
+@media screen and (max-width: 1920px) {
+  .box {
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+    /* width: 400px; */
+    width: 220px;
+    /* height: 280px; */
+    margin: 0 auto;
+    .link {
+      width: 180px;
+      margin: 10px 20px 10px 20px;
+      cursor: pointer;
+      display: block; 
+    }
+  }
 }
 
-.close:active {
-  background: #1abc9c;
-  -webkit-box-shadow: 2px 2px 9px 1px rgba(0,0,0,0.5) inset;
-  box-shadow: 2px 2px 9px 1px rgba(0,0,0,0.5) inset;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-  -webkit-transform: rotateZ(471.54426539266757deg)   ;
-  transform: rotateZ(471.54426539266757deg)   ;
+@media screen and (max-width: 768px) {
+  .box {
+    position: relative;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #191919;
+    .link {
+      margin: 20px auto;
+    }
+  }
 }
 
-.close::before {
-  display: inline-block;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 0.45em;
-  height: 0.1em;
-  position: absolute;
-  content: "";
-  top: 0.33em;
-  left: 0.155em;
-  border: none;
-  font: normal 100%/normal Arial, Helvetica, sans-serif;
-  color: rgba(0,0,0,1);
-  -o-text-overflow: clip;
-  text-overflow: clip;
-  background: #ffffff;
-  text-shadow: none;
-  -webkit-transform: rotateZ(24.064227395494576deg);
-  transform: rotateZ(24.064227395494576deg);
+.box {
+  .link {
+    width: 180px;
+    cursor: pointer;
+    display: block; 
+    .button {
+      display: block;
+      position: relative;
+      height: 50px;
+      line-height: 50px;
+      /* color: #2DCB70; */
+      color: #d78716;
+      font-family: Arial;
+      font-weight: bolder;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding-left: 20px;
+      margin: 0 auto;
+      transition: all 0.5s;
+      -ms-transition: all 0.5s cubic-bezier(0.5,0,0.5,1);
+      -webkit-transition: all 0.5s cubic-bezier(0.5,0,0.5,1);
+      -moz-transition: all 0.5s cubic-bezier(0.5,0,0.5,1);
+      -o-transition: all 0.5s cubic-bezier(0.5,0,0.5,1);
+      &:hover {
+        border: 2px solid rgba(255,255,255,1);
+        padding-left: 40px;
+        .line {
+          background: #fff;
+        }
+        .line-top {
+          width: 100%;
+          left: -2px;
+        }
+        .line-right {
+          height: 100%;
+          top: -2px;
+        }
+        .line-bottom {
+          width: 100%;
+          right: -2px;
+        }
+        .line-left {
+          height: 100%;
+          bottom: -2px;
+        }
+      }
+      .line {
+        display: block;
+        position: absolute;
+        background: none;
+        -ms-transition: all 0.4s ease;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+      }
+      .line-top {
+        height: 2px;
+        width: 0;
+        left: -50%;
+        top: -2px;
+      }
+      .line-right {
+        height: 0;
+        width: 2px;
+        right: -2px;
+        top: -50%;
+      }
+      .line-bottom {
+        height: 2px;
+        width: 0;
+        right: -50%;
+        bottom: -2px;
+      }
+      .line-left {
+        height: 0;
+        width: 2px;
+        left: -2px;
+        bottom: -50%;
+      }
+    }
+  }
 }
 
-.close::after {
-  display: inline-block;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 0.45em;
-  height: 0.1em;
-  position: absolute;
-  content: "";
-  top: 0.33em;
-  left: 0.155em;
-  border: none;
-  font: normal 100%/normal Arial, Helvetica, sans-serif;
-  color: rgba(0,0,0,1);
-  -o-text-overflow: clip;
-  text-overflow: clip;
-  background: #ffffff;
-  text-shadow: none;
-  -webkit-transform: rotateZ(-66.46310423517549deg)   ;
-  transform: rotateZ(-66.46310423517549deg)   ;
+nav {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  background-color: #314D68;
+  border-bottom: 1px solid #314D68;
+  background-size: 64px 36px;
+  background-border: 2px solid #314D68;
+  h1 {
+    font-family: 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica', serif;
+    color: white;
+    padding-left: 10px;
+    float: left;
+  }
+  a {
+    padding-left: 10px;
+    float: left;
+    img {
+      vertical-align: middle;
+      width: 64px;
+      height: 36px;
+      background: transparent url(../images/FusionSummon.png) no-repeat left;
+      background-size: 64px 36px;
+      border: none;
+    }
+  }
 }
 
-h1 {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  border: none;
-  /* font: normal 36px/1 "Cabin Condensed", Helvetica, sans-serif; */
-  font: normal 60px/1 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica';
-  font-family: 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica', serif;
-  text-transform: uppercase;
-  /* color: #FFC100; */
-  color: #ffffff;
-  text-align: center;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
+.select-items {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #191919;
+  /* outline: none; */
+  select {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    -webkit-appearance: none;
+    height: 40px;
+    border: none;
+    background-color: #191919;
+    color: rgba(255,255,255, 0.5);
+    width: 100%;
+    font-size: 1em;
+    padding-left: 10px;
+    @include transition(all 0.5s);
+    &:hover {
+      background-color: transparent;
+      color: white;
+      padding-left: 50px;
+    }
+  }
 }
 
-h3 {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  border: none;
-  /* font: normal 36px/1 "Cabin Condensed", Helvetica, sans-serif; */
-  font: normal 30px/1 'futura';
-  font-family: 'futura', serif;
-  /* color: #ffffff; */
-  /* color: #D6BB41; */
-  color: #FFC100;
-  text-decoration: underline;
-  text-align: center;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-}
-
-.highlight {
-  color: #FF6600;
-}
-
-.lastline {                                
-  border-bottom: 3px solid rgba(0,0,0,.12);
+#main {
+  margin-top: 100px;
 }

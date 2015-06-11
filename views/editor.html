@@ -15,12 +15,15 @@
   <!-- h3 -->
   <h3 ng-bind="file"></h3>
 
-  <select data-ng-model="selected"
-          data-ng-options="item.name for item in filenames">
-    <option value=""> Choose a file </option>    
-  </select>
+  <center>
+    <select data-ng-model="selected"
+            data-ng-options="item.name for item in filenames"
+            data-ng-change="update()">
+      <option value=""> Choose a file </option>    
+    </select>
+  </center>
 
-  <p ng-bind=selected.name></p>
+  <!-- <p ng-bind=data></p> -->
 
   <!-- Tables -->
   <div ng-repeat="keys in data">
@@ -69,6 +72,19 @@
 
   </div>
   <!-- End Choose Button -->
+
+  <!-- Upload Submit -->
+  <div class="uploadBox">
+    <div id="inner">
+      <form>
+        <input id="uploadFile" placeholder="Please Choose File" disabled="disabled" />
+        <label class="btn" for="uploadBtn">Upload</label>
+        <input id="uploadBtn" type="file" class="upload" />
+        <label id="uploadSubmit" class="btn">Submit</label>
+      </form>
+    </div>
+  </div>
+  <!-- End Upload Submit -->
 
   <!-- AngularJS -->
   <script src="../bower_components/angularjs/angular.js"></script>
