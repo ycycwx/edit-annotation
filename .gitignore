@@ -1,6 +1,7 @@
 bower_components
 node_modules
 uploads
+python
 *.swp
 ._*
 .DS_Store
