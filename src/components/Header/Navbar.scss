@@ -1,0 +1,38 @@
+@import '../../css/mixins';
+
+:local(.navUl) {
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+    list-style: none;
+    margin-left: 20px;
+    li {
+        display: -webkit-flex;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        color: #f8f8f8;
+        @include transition(all 0.2s);
+        &:hover {
+            @include transform(scale(1.2));
+        }
+        a {
+            min-width: 80px;
+            text-decoration: none;
+            text-align: center;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            opacity: 0.6;
+            color: #fff;
+            padding: 0;
+            font-family: 'Montserrat', 'Arial';
+        }
+        :local(.active) {
+            opacity: 1;
+        }
+    }
+}
+

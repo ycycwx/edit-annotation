@@ -1,0 +1,61 @@
+@import '../../css/mixins';
+
+$title-color: #696969;
+$info-color: #999;
+
+:local(.blockList) {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        display: flex;
+        width: 100%;
+        @include transition(all 0.2s);
+        :local(.block) {
+            position: relative;
+            border-radius: 4px;
+            margin: 10px 20px;
+            background-color: #191919;
+            height: 120px;
+            width: 100%;
+            padding: 16px;
+            :local(.title) {
+                position: absolute;
+                color: $title-color;
+                font-size: 17px;
+            }
+            :local(.info) {
+                position: absolute;
+                color: $title-color;
+                margin-bottom: 11px;
+                top: 40px;
+                left: 20px;
+                width: 80%;
+                overflow : hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+            }
+            &:hover :local(.title){
+                color: lighten($title-color, 20%);
+            }
+            &:hover :local(.info){
+                color: lighten($info-color, 20%);
+            }
+        }
+        @media only screen and (min-width: 440px) {
+        }
+        @media only screen and (min-width: 700px) {
+            width: 50%;
+        }
+        @media only screen and (min-width: 905px) {
+            width: 33%;
+        }
+        @media only screen and (min-width: 1400px) {
+            width: 25%;
+        }
+    }
+}

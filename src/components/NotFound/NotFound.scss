@@ -1,0 +1,14 @@
+$white: #FFF;
+
+:local(.notFound) {
+    color: $white;
+    h1,
+    h2 {
+        display: block;
+        text-align: center;
+        font-family: "Montserrat";
+    }
+    h1 {
+        font-size: 300px;
+    }
+}

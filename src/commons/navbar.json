@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Home",
+        "info": "Home Page",
+        "link": "/",
+        "isHome": true
+    },
+    {
+        "title": "Editor",
+        "info": "An editor to audit output of Knowledge Fusion algorithm",
+        "link": "/editor",
+        "isHome": false
+    },
+    {
+        "title": "About",
+        "info": "Contact us",
+        "link": "/about",
+        "isHome": false
+    }
+]
