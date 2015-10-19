@@ -3,10 +3,10 @@
  * @author ycy
  */
 
-var path = require('path');
-var webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
-module.exports = {
+let config = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
@@ -49,3 +49,5 @@ module.exports = {
         }]
     }
 };
+
+export default config;
