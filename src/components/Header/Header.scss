@@ -1,0 +1,41 @@
+@import '../../css/mixins';
+
+
+:local(.nav) {
+    nav {
+        position: fixed;
+        z-index: 999;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        background-color: #314D68;
+        border-bottom: 1px solid #314D68;
+        background-size: 64px 36px;
+        background-border: 2px solid #314D68;
+        h1 {
+            font-family: 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica', serif;
+            color: white;
+            padding-left: 10px;
+            float: left;
+        }
+        a {
+            padding-left: 10px;
+            float: left;
+            img {
+                vertical-align: middle;
+                width: 64px;
+                height: 36px;
+                background: transparent url('../../images/FusionSummon.png') no-repeat left;
+                background-size: 64px 36px;
+                border: none;
+            }
+        }
+        @include transition(all 1s);
+    }
+    :local(.navShow) {
+        opacity: 0;
+    }
+}

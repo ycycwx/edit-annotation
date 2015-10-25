@@ -6,6 +6,12 @@
         "isHome": true
     },
     {
+        "title": "Crawler",
+        "info": "Crawl data from websites",
+        "link": "/crawler",
+        "isHome": false
+    },
+    {
         "title": "Editor",
         "info": "An editor to audit output of Knowledge Fusion algorithm",
         "link": "/editor",

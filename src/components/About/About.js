@@ -4,7 +4,7 @@
  */
 
 import React, {Component} from 'react';
-import u from '../../commons/utils';
+import u from '../../commons/util';
 import styles from './About.scss';
 
 class About extends Component {
@@ -24,7 +24,7 @@ class About extends Component {
                     </li>
                 </ol>
             </div>
-        )
+        );
     }
 }
 

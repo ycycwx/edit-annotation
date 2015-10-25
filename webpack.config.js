@@ -32,7 +32,7 @@ let config = {
             test: /\.json$/,
             loaders: ['json-loader']
         }, {
-            test: /\.(png|woff)$/,
+            test: /\.(jpe?g|png|woff)$/,
             loader: 'url-loader?limit=100000'
         }, {
             test: /\.s?css$/,

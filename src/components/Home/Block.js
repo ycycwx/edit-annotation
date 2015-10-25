@@ -22,7 +22,7 @@ class Block extends Component {
                     <div className={styleSheet.title}>{nav.title}</div>
                     <div className={styleSheet.info}>{nav.info}</div>
                 </Link>
-            )
+            );
         }
         else {
             linkEl = (
@@ -30,7 +30,7 @@ class Block extends Component {
                     <div className={styleSheet.title}>{nav.title}</div>
                     <div className={styleSheet.info}>{nav.info}</div>
                 </IndexLink>
-            )
+            );
         }
 
         return linkEl;

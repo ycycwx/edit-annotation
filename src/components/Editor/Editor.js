@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import $ from 'jquery';
+// import Immutable from 'immutable';
 
 import Title from './Title';
 import Selector from './Selector';
@@ -12,17 +13,34 @@ import Group from './Group';
 import UploadBox from './UploadBox';
 import ChooseButton from './ChooseButton';
 
-import style from './Editor.scss';
+import u from '../../commons/util';
+
+import styles from './Editor.scss';
 
 // Main Component
 class Editor extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             title: 'Yugoo',
-            items: [],
+            items: {},
             selectedItem: ''
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.props.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.props.handleScroll);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return (nextProps.isOverNav !== this.props.isOverNav)
+            || (nextState.selectedItem !== this.state.selectedItem)
+            || (nextState.items !== this.state.items);
     }
 
     // Handle checkbox change
@@ -31,7 +49,7 @@ class Editor extends Component {
         let newData = this.state.items[this.state.selectedItem].slice();
         newData[row][col][0] = event.target.checked;
 
-        let newItems = this.state.items;
+        let newItems = u.clone(this.state.items);
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
@@ -51,7 +69,7 @@ class Editor extends Component {
 
         newData[row] = tmpData;
 
-        let newItems = this.state.items;
+        let newItems = u.clone(this.state.items);
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
@@ -77,7 +95,7 @@ class Editor extends Component {
             newData.push(tmpData);
         }
 
-        let newItems = this.state.items;
+        let newItems = u.clone(this.state.items);
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
@@ -96,7 +114,7 @@ class Editor extends Component {
             return [x];
         }));
 
-        let newItems = this.state.items;
+        let newItems = u.clone(this.state.items);
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
@@ -148,20 +166,31 @@ class Editor extends Component {
     }
 
     render() {
+        let styleSheet = u.bindStyles(styles);
+        const {isOverNav} = this.props;
+
         return (
             <div>
-                <Title title={this.state.title} />
+                <Title
+                    styleSheet={isOverNav ? styleSheet('title', 'fix') : styleSheet('title')}
+                    title={this.state.title}
+                />
                 {
-                    this.state.items.length === 0 ? null :
+                    Object.keys(this.state.items).length === 0 ? null :
                         <Selector
+                            styleSheet={isOverNav ? styleSheet('select-items', 'fix-select-items') :
+                                styleSheet('select-items')}
                             selectedItem={this.state.selectedItem}
                             items={this.state.items}
                             handleChangeSelect={::this.handleChangeSelect} />
                 }
-                {
-                    this.state.items.length === 0 ? null :
-                        this.state.items[this.state.selectedItem].map(::this.dispGroup)
-                }
+                <div className={isOverNav ? styles.groups : null}>
+                    {
+                        Object.keys(this.state.items).length === 0 ? null :
+                            this.state.items[this.state.selectedItem].map(::this.dispGroup)
+                    }
+                </div>
+                <div className={isOverNav ? styles.block : null}></div>
                 <ChooseButton handleClick={::this.handleClick} />
                 <UploadBox handleSubmit={::this.handleSubmit} />
             </div>

@@ -3,59 +3,116 @@
 $title-color: #696969;
 $info-color: #999;
 
-:local(.blockList) {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    li {
+:local(.page) {
+    margin-top: -50px;
+    :local(.header) {
+        /*
+         * background-image: url('../../images/Gundam_Try_Fighters.jpg');
+         * background-attachment: fixed;
+         * background-position: 0 50px;
+         * background-size: contain;
+         * background-repeat: no-repeat;
+         * height: 300px;
+         */
+        position: relative;
+        display: -webkit-flex;
         display: flex;
         width: 100%;
-        @include transition(all 0.2s);
-        :local(.block) {
-            position: relative;
-            border-radius: 4px;
-            margin: 10px 20px;
-            background-color: #191919;
-            height: 120px;
+        height: 100%;
+        -webkit-justify-content: center;
+        justify-content: center;
+        video {
+            min-width: 100%;
+            min-height: 100%;
+        }
+        :local(.title) {
+            position: absolute;
+            color: blue;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 10%;
+            height: 20%;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            border: 4px solid white;
+            color: #fff;
+            font-size: 3em;
+            font-weight: 700;
+            min-width: 300px;
+            padding: 10px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            @include transition(all 0.5s);
+            &:hover {
+                @include transform(scale(2));
+                color: black;
+                border: none;
+            }
+        }
+    }
+
+    :local(.blockList) {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            display: flex;
             width: 100%;
-            padding: 16px;
-            :local(.title) {
-                position: absolute;
-                color: $title-color;
-                font-size: 17px;
+            @include transition(all 0.2s);
+            :local(.block) {
+                position: relative;
+                border-radius: 4px;
+                margin: 10px 20px;
+                background-color: #191919;
+                height: 120px;
+                width: 100%;
+                padding: 16px;
+                :local(.title) {
+                    position: absolute;
+                    color: $title-color;
+                    font-size: 17px;
+                }
+                :local(.info) {
+                    position: absolute;
+                    color: $title-color;
+                    margin-bottom: 11px;
+                    top: 40px;
+                    left: 20px;
+                    width: 80%;
+                    overflow : hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+                &:hover :local(.title){
+                    color: lighten($title-color, 20%);
+                }
+                &:hover :local(.info){
+                    color: lighten($info-color, 20%);
+                }
             }
-            :local(.info) {
-                position: absolute;
-                color: $title-color;
-                margin-bottom: 11px;
-                top: 40px;
-                left: 20px;
-                width: 80%;
-                overflow : hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
+            @media only screen and (min-width: 440px) {
             }
-            &:hover :local(.title){
-                color: lighten($title-color, 20%);
+            @media only screen and (min-width: 700px) {
+                width: 50%;
             }
-            &:hover :local(.info){
-                color: lighten($info-color, 20%);
+            @media only screen and (min-width: 905px) {
+                width: 33%;
             }
-        }
-        @media only screen and (min-width: 440px) {
-        }
-        @media only screen and (min-width: 700px) {
-            width: 50%;
-        }
-        @media only screen and (min-width: 905px) {
-            width: 33%;
-        }
-        @media only screen and (min-width: 1400px) {
-            width: 25%;
+            @media only screen and (min-width: 1400px) {
+                width: 25%;
+            }
         }
     }
 }

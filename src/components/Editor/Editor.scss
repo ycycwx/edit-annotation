@@ -1,6 +1,38 @@
 @import '../../css/mixins';
 
-.title {
+:local(.fix) {
+    /*
+     * position: fixed;
+     * top: 0;
+     * left: 0;
+     * width: 100%;
+     * text-align: center;
+     * margin-top: 50px;
+     * z-index: 100;
+     */
+}
+
+:local(.fix-select-items) {
+    position: fixed;
+    margin: 0 auto;
+    top: 50px;
+    left: 0;
+    right: 0;
+    width: 60%;
+    z-index: 100;
+}
+
+:local(.block) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 150px;
+    width: 100%;
+    background-color: #000;
+    z-index: 50;
+}
+
+:local(.title) {
     padding: 10px;
     margin-bottom: 5em;
     text-align: center;
@@ -36,6 +68,10 @@
         font-family: 'Montserrat', sans-serif;
         margin-top: 1em;
     }
+}
+
+:local(.groups) {
+    margin-top: 170px;
 }
 
 [class*="fontawesome-"]:before {
@@ -441,39 +477,7 @@ table {
   }
 }
 
-nav {
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  height: 50px;
-  line-height: 50px;
-  width: 100%;
-  background-color: #314D68;
-  border-bottom: 1px solid #314D68;
-  background-size: 64px 36px;
-  background-border: 2px solid #314D68;
-  h1 {
-    font-family: 'Chalkduster', 'Bitter', 'Roboto:100', 'Helvetica', serif;
-    color: white;
-    padding-left: 10px;
-    float: left;
-  }
-  a {
-    padding-left: 10px;
-    float: left;
-    img {
-      vertical-align: middle;
-      width: 64px;
-      height: 36px;
-      background: transparent url('../../images/FusionSummon.png') no-repeat left;
-      background-size: 64px 36px;
-      border: none;
-    }
-  }
-}
-
-.select-items {
+:local(.select-items) {
   width: 60%;
   margin: 0 auto;
   padding: 20px;

@@ -13,10 +13,12 @@ class Title extends Component {
     }
 
     render() {
+        const {styleSheet, title} = this.props;
+
         return (
-            <div className="title">
+            <div className={styleSheet}>
                 <h1>
-                    <IndexLink to="/">{ this.props.title.toUpperCase() }</IndexLink>
+                    <IndexLink to="/">{ title.toUpperCase() }</IndexLink>
                 </h1>
                 <h3>DATA FUSION WEB TOOL</h3>
             </div>

@@ -5,9 +5,10 @@
 
 import multer from 'multer';
 import fs from 'fs';
+import {spawn} from 'child_process';
 
 let upload = multer({
-    dest: '../../uploads/'
+    dest: './uploads/'
 });
 
 let Routes = (app) => {
@@ -21,6 +22,31 @@ let Routes = (app) => {
             let jsonData = JSON.parse(data);
             res.json(jsonData);
         });
+    });
+
+    app.post('/crawler', (req, res) => {
+        const {value} = req.body;
+        let python = spawn('python3', ['python/main.py', value]);
+
+        python.stdout.on('data', (data) => {
+            // console.log('stdout: ' + data);
+        });
+
+        python.stderr.on('data', (data) => {
+            // console.log('stderr: ' + data);
+        });
+
+        python.on('close', (code) => {
+            // console.log('child process exited with code ' + code);
+        });
+    });
+
+    app.post('/logger', (req, res) => {
+        const {value} = req.body;
+        let logger = `${value.split(' ').join('_')}.log`;
+        let array = fs.readFileSync(`log/${logger}`).toString().split('\n');
+
+        res.json(array);
     });
 };
 

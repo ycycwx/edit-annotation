@@ -1,7 +1,10 @@
 bower_components
 node_modules
-uploads
+uploads/*
 python
+.pyc
+src/images/untrack
+log/*
 *.swp
 ._*
 .DS_Store

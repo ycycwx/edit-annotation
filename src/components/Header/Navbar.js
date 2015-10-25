@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import {IndexLink, Link} from 'react-router';
-import u from '../../commons/utils';
+import u from '../../commons/util';
 import styles from './Navbar.scss';
 
 // Navbar component
@@ -14,27 +14,23 @@ class Navbar extends Component {
         super(props);
     }
 
-    createLiItems(nav) {
+    createLiItems(nav, key) {
         const path = u.getPathByHash();
         let activeClass;
 
-        if (nav.link == path) {
+        if (nav.link === path) {
             activeClass = styles.active;
         }
 
-        console.log(path);
-        console.log(activeClass);
-
         if (nav.isHome) {
             return (
-                <li><IndexLink className={activeClass} to={nav.link}>{nav.title}</IndexLink></li>
-            )
+                <li key={key}><IndexLink className={activeClass} to={nav.link}>{nav.title}</IndexLink></li>
+            );
         }
-        else {
-            return (
-                <li><Link className={activeClass} to={nav.link}>{nav.title}</Link></li>
-            )
-        }
+
+        return (
+            <li key={key}><Link className={activeClass} to={nav.link}>{nav.title}</Link></li>
+        );
     }
 
     render() {

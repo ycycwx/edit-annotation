@@ -18,8 +18,10 @@ class Selector extends Component {
     }
 
     render() {
+        const {styleSheet} = this.props;
+
         return (
-            <div className="select-items">
+            <div className={styleSheet}>
                 <select defaultValue={Object.keys(this.props.items)[0]} onChange={this.props.handleChangeSelect}>
                     {
                         Object.keys(this.props.items).map(::this.createOption)
