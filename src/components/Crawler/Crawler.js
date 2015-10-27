@@ -81,11 +81,11 @@ class Crawler extends Component {
 
         let search = u.$$(ss('search'));
         let input = u.$$(ss('input'));
-        let title = u.$(`.${ss('crawler')}>p`);
+        let title = u.$(`.${ss('content')}>p`);
 
         search.toggleClass(ss('close'));
         input.toggleClass(ss('square'));
-        title.toggleClass(ss('title'));
+        title.toggleClass(ss('hide'));
 
         if (search.hasClass(ss('close'))) {
             input.focus();
@@ -102,11 +102,10 @@ class Crawler extends Component {
 
         return (
             <div className={styles.crawler}>
-                <div className={styles.logo}> Crawler </div>
-                <p onClick={::this.expand} className={styles.title}> Data Crawler </p>
                 <form
                     className={styles.content}
                     onSubmit={::this.handleSubmit}>
+                    <p onClick={::this.expand} className={styles.title}> Data Crawler </p>
                     <input
                         ref="input"
                         type="text"
@@ -121,11 +120,12 @@ class Crawler extends Component {
                         onClick={::this.expand}>
                     </button>
                 </form>
+                <div className={styles.logo}> Crawler </div>
                 <div className={styles.logger}>
                     {
                         this.state.log.map((line, idx) => {
                             return (
-                                <p style={{color: '#fff'}} key={idx}>{line}</p>
+                                <p key={idx}>{line}</p>
                                 );
                         })
                     }
