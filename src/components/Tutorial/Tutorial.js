@@ -72,9 +72,9 @@ class Tutorial extends Component {
                             url: 'src/images/editor5.jpg'
                         }
                     ]
-                },
+                }
             ]
-        }
+        };
     }
 
     render() {

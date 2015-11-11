@@ -12,7 +12,7 @@ class Line extends Component {
         super(props);
     }
 
-    render () {
+    render() {
         const {url, text, position} = this.props;
         let ss = u.bindStyles(styles);
 
@@ -24,14 +24,13 @@ class Line extends Component {
                 </div>
             );
         }
-        else {
-            return (
-                <div className={ss('line', 'left')}>
-                    <img className={styles.image} src={url} />
-                    <span className={styles.text}> {text} </span>
-                </div>
-            );
-        }
+
+        return (
+            <div className={ss('line', 'left')}>
+                <img className={styles.image} src={url} />
+                <span className={styles.text}> {text} </span>
+            </div>
+        );
     }
 }
 

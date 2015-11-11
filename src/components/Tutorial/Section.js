@@ -6,7 +6,6 @@
 import React, {Component} from 'react';
 import Line from './Line';
 import styles from './Section.scss';
-import u from '../../commons/util';
 
 class Block extends Component {
     constructor(props) {
@@ -14,7 +13,7 @@ class Block extends Component {
     }
 
     render() {
-        const {name, module, position} = this.props;
+        const {module, position} = this.props;
 
         return (
             <div className={styles.section}>
@@ -25,7 +24,7 @@ class Block extends Component {
                                 {...item}
                                 position={position}
                                 key={idx} />
-                        )
+                        );
                     })
                 }
             </div>
