@@ -17,6 +17,7 @@
     "classnames": "^2.2.0",
     "css-loader": "^0.19.0",
     "express": "^4.13.3",
+    "fbjs": "^0.3.2",
     "file-loader": "^0.8.4",
     "fs": "0.0.2",
     "history": "^1.12.5",

@@ -8,6 +8,7 @@ import {Router, Route, Link, IndexRoute} from 'react-router';
 import {createHistory, useBasename} from 'history';
 
 import Home from '../components/Home';
+import Tutorial from '../components/Tutorial';
 import Crawler from '../components/Crawler';
 import Editor from '../components/Editor';
 import Header from '../components/Header';
@@ -24,6 +25,7 @@ let router = (
     <Router history={history}>
         <Route path="/" component={Header}>
             <IndexRoute component={Home} />
+            <Route path="tutorial" component={Tutorial} />
             <Route path="editor" component={Editor} />
             <Route path="about" component={About} />
             <Route path="crawler" component={Crawler} />
