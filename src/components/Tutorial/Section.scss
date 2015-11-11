@@ -1,0 +1,18 @@
+@import '../../css/variable';
+@import '../../css/mixins';
+
+:local(.section) {
+    width: 80%;
+    margin: 10px auto;
+    padding: 30px;
+    color: $white;
+    border-radius: 5px;
+    vertical-align: top;
+    @include transition(all 0.5s);
+}
+
+@media screen and (max-width: 768px) {
+    :local(.section) {
+        width: 100%;
+    }
+}

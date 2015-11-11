@@ -6,6 +6,12 @@
         "isHome": true
     },
     {
+        "title": "Tutorial",
+        "info": "Show tutorial",
+        "link": "/tutorial",
+        "isHome": false
+    },
+    {
         "title": "Crawler",
         "info": "Crawl data from websites",
         "link": "/crawler",

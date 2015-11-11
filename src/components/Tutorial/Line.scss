@@ -1,0 +1,31 @@
+@import '../../css/variable';
+@import '../../css/mixins';
+
+:local(.left) {
+    background-color: $grey;
+}
+
+:local(.right) {
+    background-color: $light-grey;
+}
+
+:local(.line) {
+    margin: 0 auto;
+    padding: 20px;
+    color: $white;
+    :local(.image), :local(.text) {
+        width: 40%;
+        display: inline-block;
+        margin: 10px 30px;
+        font-size: 1.3em;
+        @include transition(all 0.5s);
+    }
+    :local(.text) {
+        vertical-align: top;
+    }
+    @media screen and (max-width: 1080px) {
+        :local(.image), :local(.text) {
+            width: 80%;
+        }
+    }
+}
