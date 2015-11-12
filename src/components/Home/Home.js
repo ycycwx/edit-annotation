@@ -18,10 +18,6 @@ class Home extends Component {
         return (
             <div className={styles.page}>
                 <header className={styles.header}>
-                    <video className={styles.video} autoPlay loop="loop">
-                        <source src="/src/images/Naruto.mp4" type="video/mp4" />
-                    </video>
-                    <div className={styles.title}>Yugoo</div>
                 </header>
                 <ol className={styles.blockList}>
                     {

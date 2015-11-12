@@ -6,19 +6,17 @@ $info-color: #999;
 :local(.page) {
     margin-top: -50px;
     :local(.header) {
-        /*
-         * background-image: url('../../images/Gundam_Try_Fighters.jpg');
-         * background-attachment: fixed;
-         * background-position: 0 50px;
-         * background-size: contain;
-         * background-repeat: no-repeat;
-         * height: 300px;
-         */
-        position: relative;
+        background-image: url('../../images/Gundam_Try_Fighters.jpg');
+        background-attachment: fixed;
+        background-position: 0 50px;
+        background-size: contain;
+        /* background-repeat: no-repeat; */
+        height: 300px;
+        /* position: relative; */
         display: -webkit-flex;
         display: flex;
-        width: 100%;
-        height: 100%;
+        width: 100%; 
+        /* height: 100%; */
         -webkit-justify-content: center;
         justify-content: center;
         video {
