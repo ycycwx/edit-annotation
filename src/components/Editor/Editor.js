@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import $ from 'jquery';
-// import Immutable from 'immutable';
 
 import Title from './Title';
 import Selector from './Selector';
@@ -19,6 +18,10 @@ import styles from './Editor.scss';
 
 // Main Component
 class Editor extends Component {
+
+    /**
+     * @override
+     */
     constructor(props) {
         super(props);
 
@@ -29,22 +32,38 @@ class Editor extends Component {
         };
     }
 
+    /**
+     * @override
+     */
     componentDidMount() {
         window.addEventListener('scroll', this.props.handleScroll);
     }
 
+    /**
+     * @override
+     */
     componentWillUnmount() {
         window.removeEventListener('scroll', this.props.handleScroll);
     }
 
+    /**
+     * @override
+     */
     shouldComponentUpdate(nextProps, nextState) {
         return (nextProps.isOverNav !== this.props.isOverNav)
             || (nextState.selectedItem !== this.state.selectedItem)
             || (nextState.items !== this.state.items);
     }
 
-    // Handle checkbox change
-    // TODO: copy or deep copy
+    /**
+     * Handle checkbox change
+     * `TODO`: copy or deep copy
+     *
+     * @private
+     * @param {number} row row number
+     * @param {number} col col number
+     * @param {Event} event event object
+     */
     handleChange(row, col, event) {
         let newData = this.state.items[this.state.selectedItem].slice();
         newData[row][col][0] = event.target.checked;
@@ -57,8 +76,14 @@ class Editor extends Component {
         });
     }
 
-    // Handle set top event
-    // TODO: copy or deep copy
+    /**
+     * Handle set top event
+     * `TODO`: copy or deep copy
+     *
+     * @private
+     * @param {number} row row number
+     * @param {number} col col number
+     */
     handleSwap(row, col) {
         let newData = this.state.items[this.state.selectedItem].slice();
         let tmpData = newData[row];
@@ -73,12 +98,15 @@ class Editor extends Component {
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
-            // items: newData,
             items: newItems
         });
     }
 
-    // Handle combine event
+    /**
+     * Handle combine event
+     *
+     * @private
+     */
     handleClick() {
         let tmpData = [];
         let newData = this.state.items[this.state.selectedItem].slice();
@@ -99,30 +127,37 @@ class Editor extends Component {
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
-            // items: newData,
             items: newItems
         });
     }
 
-    // Handle split event
+    /**
+     * Handle split event
+     *
+     * @private
+     * @param {number} row row number
+     */
     handleSplit(row) {
 
         let newData = this.state.items[this.state.selectedItem].slice();
 
         let item = newData.splice(row, 1);
-        newData = newData.concat(item[0].map((x) => {
-            return [x];
-        }));
+        newData = newData.concat(item[0].map(x => [x]));
 
         let newItems = u.clone(this.state.items);
         newItems[this.state.selectedItem] = newData;
 
         this.setState({
-            // items: newData,
             items: newItems
         });
     }
 
+    /**
+     * submit jQuery ajax
+     *
+     * @private
+     * @param {Event} event event object
+     */
     handleSubmit(event) {
         let formData = new FormData(event.currentTarget);
         $.ajax({
@@ -130,20 +165,25 @@ class Editor extends Component {
             type: 'POST',
             async: true,
             data: formData,
-            success: (res) => {
-                let data = res;
-                this.setState({
-                    items: data,
-                    selectedItem: Object.keys(data)[0]
-                });
-            },
             processData: false,
             contentType: false
+        })
+        .done((items) => {
+            this.setState({
+                items,
+                selectedItem: Object.keys(items)[0]
+            });
         });
         event.preventDefault();
     }
 
-    // Display each group under group-parent tag
+    /**
+     * Display each group under group-parent tag
+     *
+     * @private
+     * @param {Object} item data
+     * @param {number} idx number
+     */
     dispGroup(item, idx) {
         return (
             <div key={idx} className="group-parent">
@@ -158,13 +198,21 @@ class Editor extends Component {
         );
     }
 
-    // Handle Select's change
+    /**
+     * Handle Select's change
+     *
+     * @private
+     * @param {Event} event event object
+     */
     handleChangeSelect(event) {
         this.setState({
             selectedItem: event.target.value
         });
     }
 
+    /**
+     * @override
+     */
     render() {
         let styleSheet = u.bindStyles(styles);
         const {isOverNav} = this.props;
