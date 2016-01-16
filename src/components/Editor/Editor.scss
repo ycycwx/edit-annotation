@@ -1,15 +1,16 @@
 @import '../../css/mixins';
 
-:local(.fix) {
-    /*
-     * position: fixed;
-     * top: 0;
-     * left: 0;
-     * width: 100%;
-     * text-align: center;
-     * margin-top: 50px;
-     * z-index: 100;
-     */
+:local(.center) {
+    margin: 40px auto;
+    text-align: center;
+}
+
+:local(.download) {
+    a {
+        text-decoration: underline;
+        font-size: 20px;
+        color: white;
+    }
 }
 
 :local(.fix-select-items) {

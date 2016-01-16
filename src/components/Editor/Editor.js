@@ -215,7 +215,8 @@ class Editor extends Component {
      */
     render() {
         let styleSheet = u.bindStyles(styles);
-        const {isOverNav} = this.props;
+        let {isOverNav} = this.props;
+        let url = 'http://bcscdn.baidu.com/weigou-baidu-com/combine.json';
 
         return (
             <div>
@@ -223,6 +224,9 @@ class Editor extends Component {
                     styleSheet={isOverNav ? styleSheet('title', 'fix') : styleSheet('title')}
                     title={this.state.title}
                 />
+                <div className={styleSheet('center', 'download')}>
+                    <a href={url} download>Template Download</a>
+                </div>
                 {
                     Object.keys(this.state.items).length === 0 ? null :
                         <Selector
