@@ -19,8 +19,14 @@ let Routes = (app) => {
             if (err) {
                 throw err;
             }
-            let jsonData = JSON.parse(data);
-            res.json(jsonData);
+
+            try {
+                let jsonData = JSON.parse(data);
+                res.json(jsonData);
+            }
+            catch (ex) {
+                console.log(ex);
+            }
         });
     });
 
