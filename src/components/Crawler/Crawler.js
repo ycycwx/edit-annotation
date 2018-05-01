@@ -126,7 +126,7 @@ class Crawler extends Component {
                         this.state.log.map((line, idx) => {
                             return (
                                 <p key={idx}>{line}</p>
-                                );
+                            );
                         })
                     }
                 </div>
